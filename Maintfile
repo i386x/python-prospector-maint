@@ -1,0 +1,57 @@
+#
+#! \file    ./Maintfile
+#! \author  Jiří Kučera, <jkucera AT redhat.com>
+#! \stamp   2018-06-07 13:00:50 (UTC+01:00, DST+01:00)
+#! \project python-prospector maintenance tools
+#! \license MIT (see ./LICENSE)
+#! \version See ./VERSION
+#! \fdesc   Project maintenance script.
+#
+
+# Project variables:
+setvar PROJECT 'python-prospector maintenance tools'
+setvar AUTHOR_NAME 'Jiří Kučera'
+setvar AUTHOR_EMAIL 'jkucera AT redhat.com'
+setvar LICENSE 'MIT'
+setvar VERSION '0.0.0'
+
+setvar PKG_NAME 'python-prospector'
+setvar PKG_VERSION '0.12.11'
+setvar UPSTREAM_REPO "https://github.com/PyCQA/prospector.git"
+
+# Project files:
+addfile license : LICENSE
+addfile version : VERSION
+addfile : .gitignore README.md
+addfile sources : Maintfile
+
+###############################################################################
+# Project maintaining tasks (targets)
+###############################################################################
+
+##
+# Print usage as default.
+tg_default() {
+  echo 'Maintfile targets:'
+  echo ''
+  echo '  get_repos'
+  echo '    get upstream, downstream and package repos'
+  echo '  missing'
+  echo '    add missing files to the project root (LICENSE, README.md, and'
+  echo '    VERSION) and update headers of source files (\project, \license,'
+  echo '    and \version)'
+  echo ''
+}
+
+##
+# missing
+#
+# Add missing files to the project root (LICENSE, README.md, and VERSION) and
+# update headers of source files (\project, \license, and \version).
+target missing
+
+##
+# get_repos
+#
+# Get upstream, downstream and package repos.
+target get_repos
